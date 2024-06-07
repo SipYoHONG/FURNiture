@@ -20,7 +20,7 @@ export default function RealTime() {
 
 function RealTimeContent() {
   const { data: listData, error, refetch } = useQuery('realTimeList', async () => {
-    const response = await axios.get('/ft/realTime/list');
+    const response = await axios.get('https://52.79.234.96:8090/ft/realTime/list');
     return response.data;
   }, {
     refetchInterval: 5000,

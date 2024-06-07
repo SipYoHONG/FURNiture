@@ -3,7 +3,7 @@ import axios from 'axios';
 // item
 export const getItemDetail = async (iid) => {
   try {
-    const response = await axios.get(`/ft/item/detail/${iid}/em`);
+    const response = await axios.get(`https://52.79.234.96:8090/ft/item/detail/${iid}/em`);
     return response.data;
   } catch (error) {
     console.log('Error fetching item detail:', error);
@@ -13,7 +13,7 @@ export const getItemDetail = async (iid) => {
 
 export const updateItem = async (requestData) => {
   try {
-    const response = await axios.post(`/ft/item/update`, requestData);
+    const response = await axios.post(`https://52.79.234.96:8090/ft/item/update`, requestData);
     return response.data;
   } catch (error) {
     console.log('Error updating item:', error);
@@ -23,7 +23,7 @@ export const updateItem = async (requestData) => {
 
 export const insertItem = async (requestData) => {
   try {
-    const response = await axios.post('/ft/item/insert', requestData);
+    const response = await axios.post('https://52.79.234.96:8090/ft/item/insert', requestData);
     return response.data;
   } catch (error) {
     console.log('Error inserting item:', error);
@@ -34,7 +34,7 @@ export const insertItem = async (requestData) => {
 export const fetchItemData = async (iid, currentUserEmail) => {
   try {
     const userEmail = currentUserEmail || 'em';
-    const response = await axios.get(`/ft/item/detail/${iid}/${userEmail}`);
+    const response = await axios.get(`https://52.79.234.96:8090/ft/item/detail/${iid}/${userEmail}`);
     return response;
   } catch (error) {
     throw error;
@@ -42,7 +42,7 @@ export const fetchItemData = async (iid, currentUserEmail) => {
 };
 
 export const fetchItemListAPI = async () => {
-  return axios.get('/ft/item/list')
+  return axios.get('https://52.79.234.96:8090/ft/item/list')
     .then(res => res.data)
     .catch(err => {
       console.log('Error fetching item list:', err);
@@ -52,7 +52,7 @@ export const fetchItemListAPI = async () => {
 
 export const deletedItem = async (iid) => {
   try {
-    const response = await axios.delete(`/ft/item/delete/${iid}`);
+    const response = await axios.delete(`https://52.79.234.96:8090/ft/item/delete/${iid}`);
     return response;
   } catch (error) {
     console.log('Error deleting item:', error);
@@ -62,7 +62,7 @@ export const deletedItem = async (iid) => {
 
 export const addItemSale = async (formData) => {
   try {
-    const response = await axios.post('/ft/item/sale', formData);
+    const response = await axios.post('https://52.79.234.96:8090/ft/item/sale', formData);
     return response.data;
   } catch (error) {
     console.log('Error:', error);

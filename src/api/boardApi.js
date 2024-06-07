@@ -3,7 +3,7 @@ import axios from 'axios';
 // board
 export const fetchQnAList = async () => {
   try {
-    const response = await axios.get('/ft/board/QnAList'); // 데이터 가져오기
+    const response = await axios.get('https://52.79.234.96:8090/ft/board/QnAList'); // 데이터 가져오기
     return response.data; // 가져온 데이터 반환
   } catch (error) {
     console.log('데이터를 불러오는 중 에러:', error);
@@ -15,7 +15,7 @@ export const fetchQnAList = async () => {
 // 리뷰 데이터를 가져오는 함수
 export const fetchReviewsData = async (iid) => {
   try {
-    const response = await axios.get(`/ft/board/list/review/${iid}`);
+    const response = await axios.get(`https://52.79.234.96:8090/ft/board/list/review/${iid}`);
     return response;
   } catch (error) {
     throw error;
@@ -25,7 +25,7 @@ export const fetchReviewsData = async (iid) => {
 // 문의 데이터를 가져오는 함수
 export const fetchQnAData = async (iid) => {
   try {
-    const response = await axios.get(`/ft/board/list/QnA/${iid}`);
+    const response = await axios.get(`https://52.79.234.96:8090/ft/board/list/QnA/${iid}`);
     return response;
   } catch (error) {
     throw error;
@@ -34,7 +34,7 @@ export const fetchQnAData = async (iid) => {
 
 export const submitBoard = async (formData) => {
   try {
-    const response = await axios.post('/ft/board/insert', formData);
+    const response = await axios.post('https://52.79.234.96:8090/ft/board/insert', formData);
     return response.data;
   } catch (error) {
     console.error('Error submitting review:', error);
@@ -44,7 +44,7 @@ export const submitBoard = async (formData) => {
 
 export const updateBoard = async (formData) => {
   try {
-    const response = await axios.post('/ft/board/update', formData);
+    const response = await axios.post('https://52.79.234.96:8090/ft/board/update', formData);
     return response.data;
   } catch (error) {
     console.log('Error updating review:', error);
@@ -54,7 +54,7 @@ export const updateBoard = async (formData) => {
 
 export const deleteBoard = async (postId) => {
   try {
-    const response = await axios.post(`/ft/board/delete/${postId}`);
+    const response = await axios.post(`https://52.79.234.96:8090/ft/board/delete/${postId}`);
     return response;
   } catch (error) {
     console.log('Error deleting post:', error);
@@ -64,7 +64,7 @@ export const deleteBoard = async (postId) => {
 
 export const adminQnAList = async () => {
   try {
-    const response = await axios.get('/ft/board/adminQnAList'); // 데이터 가져오기
+    const response = await axios.get('https://52.79.234.96:8090/ft/board/adminQnAList'); // 데이터 가져오기
     return response.data; // 가져온 데이터 반환
   } catch (error) {
     console.log('데이터를 불러오는 중 에러:', error);

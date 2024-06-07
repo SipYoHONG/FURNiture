@@ -3,7 +3,7 @@ import axios from 'axios';
 // order
 export const orderHistoryList = async (email) => {
   try {
-    const response = await axios.post(`/ft/order/historyList`, { email }); // 데이터 가져오기
+    const response = await axios.post(`https://52.79.234.96:8090/ft/order/historyList`, { email }); // 데이터 가져오기
     return response.data; // 가져온 데이터 반환
   } catch (error) {
     console.log('데이터를 불러오는 중 에러:', error);
@@ -13,7 +13,7 @@ export const orderHistoryList = async (email) => {
 
 export const orderInsert = async (orderData) => {
   try {
-    const response = await axios.post('/ft/order/insert', orderData); // 데이터 가져오기
+    const response = await axios.post('https://52.79.234.96:8090/ft/order/insert', orderData); // 데이터 가져오기
     return response.data; // 가져온 데이터 반환
   } catch (error) {
     console.log('데이터를 불러오는 중 에러:', error);
@@ -23,7 +23,7 @@ export const orderInsert = async (orderData) => {
 
 export const confirmPayment = async (requestData) => {
   try {
-    const response = await fetch('/ft/confirm', {
+    const response = await fetch('https://52.79.234.96:8090/ft/confirm', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const confirmPayment = async (requestData) => {
 // 주문 내역 가져오기
 export async function fetchOrderHistory(currentUserEmail) {
   try {
-    const response = await axios.post('/ft/order/historyList', { email: currentUserEmail });
+    const response = await axios.post('https://52.79.234.96:8090/ft/order/historyList', { email: currentUserEmail });
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -69,7 +69,7 @@ export async function deleteOrderHistory(orderId, email, updateOrdersCallback) {
   
   try {
     const stringedOrderId = String(orderId);
-    await axios.post('/ft/order/orderDelete', { oid: stringedOrderId });
+    await axios.post('https://52.79.234.96:8090/ft/order/orderDelete', { oid: stringedOrderId });
     const updatedOrders = await fetchOrderHistory(email);
     updateOrdersCallback(updatedOrders); // 콜백 함수(setOrders) 호출로 상태 업데이트
   } catch (error) {
@@ -82,7 +82,7 @@ export async function deleteOrderHistory(orderId, email, updateOrdersCallback) {
 // Admin의 모든 유저 주문내역 불러오기
 export const fetchAdminOrderHistory = async (email) => {
   try {
-    const response = await axios.post('/ft/order/admin/historyList', { email });
+    const response = await axios.post('https://52.79.234.96:8090/ft/order/admin/historyList', { email });
     return response.data;
   } catch (error) {
     console.error('주문 내역을 불러오는데 실패했습니다:', error);
@@ -98,7 +98,7 @@ export async function deleteAdminOrderHistory(orderId) {
   
   try {
     const stringedOrderId = String(orderId);
-    await axios.post('/ft/order/orderDelete', { oid: stringedOrderId });
+    await axios.post('https://52.79.234.96:8090/ft/order/orderDelete', { oid: stringedOrderId });
   } catch (error) {
     console.log('주문 삭제 실패:', error);
   }
@@ -106,7 +106,7 @@ export async function deleteAdminOrderHistory(orderId) {
 
 export const nonMembersOrderHistory = async (name, tel) => {
   try {
-    const response = await axios.post('/ft/order/nonMembersOrderHistory', { name, tel });
+    const response = await axios.post('https://52.79.234.96:8090/ft/order/nonMembersOrderHistory', { name, tel });
     return response; // 가져온 데이터 반환
   } catch (error) {
     console.log('데이터를 불러오는 중 에러:', error);
