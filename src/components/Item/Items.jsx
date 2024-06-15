@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const server = process.env.REACT_APP_API_SERVERURL;
+
 export async function Items() {
   try {
-    const response = await axios.get('/ft/item/list');
+    const response = await axios.get(`${server}/ft/item/list`);
     const itemList = response.data;
     
     // 각 아이템에 대해 상세 정보(옵션과 태그)를 가져와서 추가합니다.
@@ -20,7 +22,7 @@ export async function Items() {
 
 export async function getItemDetail(iid) {
   try {
-    const response = await axios.get(`/ft/item/detail/${iid}/em`);
+    const response = await axios.get(`${server}/ft/item/detail/${iid}/em`);
     const { item, options, tags } = response.data;
 
     const formattedItem = {
@@ -61,7 +63,7 @@ export async function getItemDetail(iid) {
 // 검색 결과를 가져오는 함수
 export const fetchSearchItems = async (query) => {
   try {
-    const response = await fetch(`/ft/item/search/${query}`);
+    const response = await fetch(`${server}/ft/item/search/${query}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -74,7 +76,7 @@ export const fetchSearchItems = async (query) => {
 
 export async function NewItems() {
   try {
-    const response = await axios.get('/ft/item/newList');
+    const response = await axios.get(`${server}/ft/item/newList`);
     const itemList = response.data;
     
     // 각 아이템에 대해 상세 정보(옵션과 태그)를 가져와서 추가합니다.
@@ -93,7 +95,7 @@ export async function NewItems() {
 // 메뉴에따라 데이터값변경
 export const menuItems = async (menu) => {
   try {
-    const response = await fetch(`/ft/item/itemMenu/${menu}`);
+    const response = await fetch(`${server}/ft/item/itemMenu/${menu}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Menu, MenuItem, Box, Typography } from '@mui/material';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../../css/RealTime.css';
+import { realTimeList } from '../../api/realTimeApi';
 
 const queryClient = new QueryClient();
 
@@ -20,8 +21,8 @@ export default function RealTime() {
 
 function RealTimeContent() {
   const { data: listData, error, refetch } = useQuery('realTimeList', async () => {
-    const response = await axios.get('https://52.79.234.96:8090/ft/realTime/list');
-    return response.data;
+    const response = await realTimeList();
+    return response;
   }, {
     refetchInterval: 5000,
   });
